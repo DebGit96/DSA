@@ -1,4 +1,5 @@
 class Solution {
+    // 2pointer sliding window, works only coz theres +ve integers
     public int minOperations(int[] nums, int x) {
         int len=nums.length;
         int sum=0;
