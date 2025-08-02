@@ -5,13 +5,19 @@ class Solution {
         int leftMax=height[l],rightMax=height[r];
         int trappedWater=0;
         while(l<r){
+            int curTrap=0;
             if(rightMax<leftMax){
-                rightMax=Math.max(rightMax,height[--r]);
-                trappedWater+=rightMax-height[r];
+                curTrap=rightMax-height[r--];
+                rightMax=Math.max(rightMax,height[r]);
+                
             }
             else{
-                leftMax=Math.max(leftMax,height[++l]);
-                trappedWater+=leftMax-height[l];
+                curTrap=leftMax-height[l++];
+                leftMax=Math.max(leftMax,height[l]);
+            }
+
+            if(curTrap>0){
+                trappedWater+=curTrap;
             }
         }
 
