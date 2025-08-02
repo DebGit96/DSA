@@ -1,5 +1,5 @@
 class MedianFinder {
-
+    //using 2 heaps
     PriorityQueue<Integer> firstMaxHeap;
     PriorityQueue<Integer> secondMinHeap;
 
