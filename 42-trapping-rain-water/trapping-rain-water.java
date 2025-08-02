@@ -1,19 +1,20 @@
-public class Solution {
+class Solution {
+    //2 pointer to deterine the min of left or right max
     public int trap(int[] height) {
-        int ans = 0, current = 0;
-        Deque<Integer> st = new LinkedList<Integer>();
-        while (current < height.length) {
-            while (!st.isEmpty() && height[current] > height[st.peek()]) {
-                int top = st.peek();
-                st.pop();
-                if (st.isEmpty()) break;
-                int distance = current - st.peek() - 1;
-                int bounded_height =
-                    Math.min(height[current], height[st.peek()]) - height[top];
-                ans += distance * bounded_height;
+        int l=0,r=height.length-1;
+        int leftMax=height[l],rightMax=height[r];
+        int trappedWater=0;
+        while(l<r){
+            if(rightMax<leftMax){
+                rightMax=Math.max(rightMax,height[--r]);
+                trappedWater+=rightMax-height[r];
             }
-            st.push(current++);
+            else{
+                leftMax=Math.max(leftMax,height[++l]);
+                trappedWater+=leftMax-height[l];
+            }
         }
-        return ans;
+
+        return trappedWater;
     }
 }
