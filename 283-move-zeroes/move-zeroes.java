@@ -1,18 +1,20 @@
 class Solution {
-    // optimal space but o(n) operations even if multiple 0s are already present
+    // optimal space and optimal o(n) operations only no. of non 0 element operations
     public void moveZeroes(int[] nums) {
         int fillPtr=0,searchPtr=0;
         int len=nums.length;
 
         while(searchPtr<len){
             if(nums[searchPtr]!=0){
-                nums[fillPtr++]=nums[searchPtr];
+                swap(nums,fillPtr++,searchPtr);
             }
             searchPtr++;
         }
+    }
 
-        while(fillPtr<len){
-            nums[fillPtr++]=0;
-        }
+    void swap(int nums[],int ind1,int ind2){
+        int tmp=nums[ind1];
+        nums[ind1]=nums[ind2];
+        nums[ind2]=tmp;
     }
 }
