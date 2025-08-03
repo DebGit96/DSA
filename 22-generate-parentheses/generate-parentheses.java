@@ -1,4 +1,5 @@
 class Solution {
+    //using String builder
     public List<String> generateParenthesis(int n) {
         List<String> comb=new ArrayList<>();
         formParan(n,n,new StringBuilder(),comb);
