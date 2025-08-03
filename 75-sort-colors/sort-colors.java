@@ -1,4 +1,5 @@
 class Solution {
+    // 3 pointer one pass
     public void sortColors(int[] nums) {
         int p0=0,p2=nums.length-1,cur=0;
 
