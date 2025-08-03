@@ -1,26 +1,27 @@
 class Solution {
     public List<String> generateParenthesis(int n) {
         List<String> comb=new ArrayList<>();
-        formParan(n,n,"",comb);
+        formParan(n,n,new StringBuilder(),comb);
         return comb;
     }
 
-    void formParan(int o,int c,String op,List<String> opList){
+    void formParan(int o,int c,StringBuilder op,List<String> opList){
         if(o==0 && c==0){
-            opList.add(op);
+            opList.add(op.toString());
             return;
         }
 
-        if(o==0){
-            formParan(o,c-1,op+")",opList);
+        if(o>0){
+            op.append("(");
+            formParan(o-1,c,op,opList);
+            op.deleteCharAt(op.length()-1);
         }
 
-        else if(o==c){
-            formParan(o-1,c,op+"(",opList);
+        if(c>o){
+            op.append(")");
+            formParan(o,c-1,op,opList);
+            op.deleteCharAt(op.length()-1);
         }
-        else if(c>o){
-            formParan(o-1,c,op+"(",opList);
-            formParan(o,c-1,op+")",opList);
-        }
+        
     }
 }
