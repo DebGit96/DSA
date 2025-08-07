@@ -1,4 +1,5 @@
 class Solution {
+    //dp bottom up
     public boolean wordBreak(String s, List<String> wordDict) {
         int sLen=s.length();
         boolean[] memo=new boolean[sLen+1];
