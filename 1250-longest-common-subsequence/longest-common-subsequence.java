@@ -24,15 +24,7 @@ class Solution {
         }
 
         else{
-            // if(l1<t1InCh.length && l2<t2InCh.length){
                 memo[l1][l2]= Math.max(f(t1InCh,t2InCh,l1+1,l2,memo),f(t1InCh,t2InCh,l1,l2+1,memo));
-            // }
-            // if(l1<t1InCh.length){
-            //     return f(t1InCh,t2InCh,l1+1,l2);
-            // }
-            // else{
-            //     return f(t1InCh,t2InCh,l1,l2+1);
-            // }
         }
         return memo[l1][l2];
     }
