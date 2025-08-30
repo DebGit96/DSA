@@ -1,24 +1,24 @@
 class Solution {
-    //dp bottom up
     public boolean wordBreak(String s, List<String> wordDict) {
-        int sLen=s.length();
-        boolean[] memo=new boolean[sLen+1];
-        Arrays.fill(memo,false);
-        memo[sLen]=true;
+        Set<String> dict = new HashSet<>(wordDict);
+        Boolean[] memo= new Boolean[s.length()];
+        return check(0,s, dict,memo);
+    }
 
-        for(int i=sLen-1;i>=0;--i){
-            for(String word : wordDict){
-                int wordLen=word.length();
-                int subStrEndInd=i+wordLen-1;
-                if(subStrEndInd<sLen && s.substring(i,subStrEndInd+1).equals(word)){
-                    memo[i]=memo[i+wordLen];
-                    if(memo[i]){
-                        break;
-                    }
-                }
+    boolean check(int l, String s, Set<String> dict, Boolean[] memo) {
+        if(memo[l]!=null){
+            return memo[l];
+        }
+
+        for (int r = l; r < s.length(); ++r) {
+            String curSubStr = s.substring(l, r + 1);
+            if (dict.contains(curSubStr) && (r == s.length() - 1 || check(r + 1, s, dict,memo))) {
+                memo[l]=true;;
+                return true;
             }
         }
 
-        return memo[0];
+        memo[l]=false;
+        return false;
     }
 }
