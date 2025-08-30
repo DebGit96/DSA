@@ -26,7 +26,8 @@ class Solution {
             return 0;
         }
 
-        int lP=Math.max(0,pathSum(node.left,max)); 
+        int lP=Math.max(0,pathSum(node.left,max));  // max with 0 is done to ignore negative sums (as negative sums would never contribute to max sum) from the left and right subtrees
+
         int rP=Math.max(0,pathSum(node.right,max)); 
 
         max[0]=Math.max(max[0],node.val+lP+rP);
