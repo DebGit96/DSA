@@ -16,7 +16,7 @@
 class Solution {
     public int maxPathSum(TreeNode root) {
         int[] max=new int[1];
-        max[0]= Integer.MIN_VALUE;
+        max[0]= Integer.MIN_VALUE; //min_value is selected so that even if theres only negative nodes max sum of 0 is not resulted
         pathSum(root,max);
         return max[0];
     }
@@ -26,8 +26,8 @@ class Solution {
             return 0;
         }
 
-        int lP=Math.max(0,pathSum(node.left,max));
-        int rP=Math.max(0,pathSum(node.right,max));
+        int lP=Math.max(0,pathSum(node.left,max)); 
+        int rP=Math.max(0,pathSum(node.right,max)); 
 
         max[0]=Math.max(max[0],node.val+lP+rP);
 
